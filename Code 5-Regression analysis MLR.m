@@ -24,6 +24,7 @@ N = size(input_test, 2);
 p_test = mapminmax('apply', input_test, ps_input);
 [t_train, ps_output] = mapminmax(output_train, 0, 1);
 t_test = mapminmax('apply', output_test, ps_output);
+%%  Transposition to adapt the model
 p_train = p_train'; p_test = p_test';
 t_train = t_train'; t_test = t_test';
 
@@ -68,18 +69,18 @@ error2 = sqrt(sum((output_sim2' - output_test ).^2) ./ N);
 R1 = 1 - norm(output_train - output_sim1')^2 / norm(output_train - mean(output_train))^2;
 R2 = 1 - norm(output_test -  output_sim2')^2 / norm(output_test -  mean(output_test ))^2;
 
-% disp(['The R2 of the training set data is£º', num2str(R1)])
-% disp(['The R2 of the test set data is£º', num2str(R2)])
+% disp(['The R2 of the training set data isÂ£Âº', num2str(R1)])
+% disp(['The R2 of the test set data isÂ£Âº', num2str(R2)])
 
 %  MAE
 mae1 = sum(abs(output_sim1' - output_train)) ./ M ;
 mae2 = sum(abs(output_sim2' - output_test )) ./ N ;
 
-% disp(['The MAE of the training set data is£º', num2str(mae1)])
-% disp(['The MAE of the test set data is£º', num2str(mae2)])
+% disp(['The MAE of the training set data isÂ£Âº', num2str(mae1)])
+% disp(['The MAE of the test set data isÂ£Âº', num2str(mae2)])
 
 %  MBE
 mbe1 = sum(output_sim1' - output_train) ./ M ;
 mbe2 = sum(output_sim2' - output_test ) ./ N ;
-% disp(['The MBE of the training set data is£º', num2str(mbe1)])
-% disp(['The MBE of the test set data is£º', num2str(mbe2)])
+% disp(['The MBE of the training set data isÂ£Âº', num2str(mbe1)])
+% disp(['The MBE of the test set data isÂ£Âº', num2str(mbe2)])
